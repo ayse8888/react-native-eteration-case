@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '../redux/slices/counterSlice'
+import { decrement, increment } from '../../redux/slices/counterSlice'
 import { Button, Text, View } from 'react-native'
 
 export function Home({ navigation }) {

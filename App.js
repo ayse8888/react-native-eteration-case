@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Provider } from 'react-redux'
 import { persistor, store } from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
-import { HomeStackScreen, SettingsStackScreen } from './navigation/RootStack'
+import {
+    HomeStackScreen,
+    SettingsStackScreen,
+} from './navigation/RootStack'
 
 const Tab = createBottomTabNavigator()
 
