@@ -2,7 +2,7 @@ import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 import { styles } from './index.styles'
 import { AddToCart } from '../../components/AddToCart'
 
-export function Details({ route }) {
+export function ProductDetails({ route }) {
     const { product } = route.params
     console.log(route)
     return (

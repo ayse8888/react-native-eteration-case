@@ -32,7 +32,7 @@ export function Home({ navigation }) {
     }
 
     const handleProductPress = (product) => {
-        navigation.navigate('Details', { product })
+        navigation.navigate('ProductDetails', { product })
     }
 
     const renderItem = ({ item }) => (
