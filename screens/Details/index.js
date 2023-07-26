@@ -1,17 +1,33 @@
-import { Text, View } from 'react-native'
+import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 import { styles } from './index.styles'
+import { AddToCart } from '../../components/AddToCart'
 
 export function Details({ route }) {
-    const { product } = route.params;
+    const { product } = route.params
     console.log(route)
     return (
-        <View>
-      <Text>Product Details Screen</Text>
-      <Text>Product ID: {product.id}</Text>
-      <Text>Product ID: {product.name}</Text>
-      <Text>Product ID: {product.price}</Text>
-      <Text>Product ID: {product.description}</Text>
-      {/* Display other product details here */}
-    </View>
+        <ScrollView>
+            <View style={styles.productDetailContainer}>
+                <Image
+                    style={styles.productDetailImage}
+                    source={{
+                        uri: product.image,
+                    }}
+                />
+                <Text style={styles.productDetailName}>{product.name}</Text>
+                <Text style={styles.productDetailDescription}>
+                    {product.description}
+                </Text>
+                <View style={styles.productDetailBtnContainer}>
+                    <View>
+                        <Text style={styles.productDetailPrice}>Price</Text>
+                        <Text style={styles.productDetailPrice}>
+                            {product.price} ₺
+                        </Text>
+                    </View>
+                    <AddToCart />
+                </View>
+            </View>
+        </ScrollView>
     )
 }

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f0f0f0',
         borderRadius: 2,
         borderWidth: 1,
-        borderColor: "#eee",
+        borderColor: '#eee',
         shadowColor: '#000',
         shadowOffset: { width: 1, height: 2 },
         shadowOpacity:  0.2,
@@ -28,20 +28,6 @@ const styles = StyleSheet.create({
     },
     productName: {
         marginVertical: 20,
-    },
-    addToCardBtn: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        backgroundColor: 'black',
-    },
-    addToCardText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        color: 'white',
     },
 })
 

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
     FlatList,
     Image,
-    Pressable,
     ScrollView,
     Text,
     TouchableOpacity,
@@ -11,6 +10,7 @@ import {
 } from 'react-native'
 import { styles } from './index.styles'
 import { fetchProducts } from '../../redux/slices/productsSlice'
+import { AddToCart } from '../../components/AddToCart'
 
 export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
@@ -46,11 +46,9 @@ export function Home({ navigation }) {
                     uri: item.image,
                 }}
             />
-            <Text>{item.price} TL</Text>
+            <Text>{item.price} ₺</Text>
             <Text style={styles.productName}>{item.name}</Text>
-            <Pressable style={styles.addToCardBtn}>
-                <Text style={styles.addToCardText}>Add To Card</Text>
-            </Pressable>
+            <AddToCart />
         </TouchableOpacity>
     )
 

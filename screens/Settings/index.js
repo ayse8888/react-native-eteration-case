@@ -7,8 +7,8 @@ export function Settings({ navigation }) {
         >
             <Text>Settings!</Text>
             <Button
-                title="Go to Details"
-                onPress={() => navigation.navigate('Details')}
+                title='Go to Details'
+                onPress={() => navigation.navigate('Home')}
             />
         </View>
     )

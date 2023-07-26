@@ -15,13 +15,13 @@ export default function App() {
             {/* <PersistGate loading={null} persistor={persistor}> */}
             <NavigationContainer>
                 <Tab.Navigator>
-                    <Tab.Screen name="Home" component={HomeStackScreen} />
+                    <Tab.Screen name='Home' component={HomeStackScreen} />
                     <Tab.Screen
-                        name="Settings"
+                        name='Settings'
                         component={SettingsStackScreen}
                     />
                 </Tab.Navigator>
-                <StatusBar style="auto" />
+                <StatusBar style='auto' />
             </NavigationContainer>
             {/* </PersistGate> */}
         </Provider>
