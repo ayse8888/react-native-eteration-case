@@ -8,10 +8,12 @@ import {
     ProfileStackScreen,
 } from '../RootStack'
 import { StatusBar } from 'react-native'
+import { useSelector } from 'react-redux'
 
 const Tab = createBottomTabNavigator()
 
 export default function TabbarStack() {
+    const cart = useSelector(state => state.cart)
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -44,7 +46,7 @@ export default function TabbarStack() {
                 <Tab.Screen
                     name="Cart"
                     component={CartStackScreen}
-                    options={{ tabBarBadge: 3 }}
+                    options={{ tabBarBadge: cart.length }}
                 />
                 <Tab.Screen name="Favorites" component={FavoritesStackScreen} />
                 <Tab.Screen name="Profile" component={ProfileStackScreen} />

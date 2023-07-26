@@ -20,6 +20,7 @@ export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
     const isLoading = useSelector((state) => state.products.loading)
     const error = useSelector((state) => state.products.error)
+    const cart = useSelector((state) => state.cart)
     const dispatch = useDispatch()
 
     const [searchProduct, setSearchProduct] = useState('')
@@ -47,6 +48,7 @@ export function Home({ navigation }) {
         navigation.navigate('ProductDetails', { product })
     }
 
+
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={styles.productCard}
@@ -60,7 +62,7 @@ export function Home({ navigation }) {
             />
             <Text>{item.price} ₺</Text>
             <Text style={styles.productName}>{item.name}</Text>
-            <AddToCart />
+            <AddToCart cartProduct={item} />
         </TouchableOpacity>
     )
 
@@ -90,7 +92,7 @@ export function Home({ navigation }) {
                 <FlatList
                     data={filteredProducts}
                     renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item) => item.id.toString()}
                     horizontal
                     contentContainerStyle={styles.listContainer}
                 />
