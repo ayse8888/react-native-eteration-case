@@ -13,6 +13,8 @@ import { styles } from './index.styles'
 import { fetchProducts } from '../../redux/slices/productsSlice'
 import { AddToCart } from '../../components/AddToCart'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { Loading } from '../../components/Loading'
+import { Error } from '../../components/Error'
 
 export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
@@ -31,15 +33,14 @@ export function Home({ navigation }) {
 
     useEffect(() => {
         dispatch(fetchProducts())
-        console.log('products', products)
     }, [dispatch])
 
     if (isLoading) {
-        return <Text>Loading...</Text>
+        return <Loading />
     }
 
     if (error) {
-        return <Text>Error: {error}</Text>
+        return <Error error={error} />
     }
 
     const handleProductDetails = (product) => {
