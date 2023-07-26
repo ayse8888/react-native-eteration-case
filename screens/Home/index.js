@@ -55,6 +55,7 @@ export function Home({ navigation }) {
     return (
         <ScrollView>
             <View>
+            
                 <FlatList
                     data={products}
                     renderItem={renderItem}
