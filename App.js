@@ -5,7 +5,13 @@ import { persistor, store } from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
-import { HomeStackScreen, SettingsStackScreen } from './navigation/RootStack'
+import {
+    CartStackScreen,
+    FavoritesStackScreen,
+    HomeStackScreen,
+    ProfileStackScreen,
+    SettingsStackScreen,
+} from './navigation/RootStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -15,13 +21,15 @@ export default function App() {
             {/* <PersistGate loading={null} persistor={persistor}> */}
             <NavigationContainer>
                 <Tab.Navigator>
-                    <Tab.Screen name='Home' component={HomeStackScreen} />
+                    <Tab.Screen name="Home" component={HomeStackScreen} />
+                    <Tab.Screen name="Cart" component={CartStackScreen} />
                     <Tab.Screen
-                        name='Settings'
-                        component={SettingsStackScreen}
+                        name="Favorites"
+                        component={FavoritesStackScreen}
                     />
+                    <Tab.Screen name="Profile" component={ProfileStackScreen} />
                 </Tab.Navigator>
-                <StatusBar style='auto' />
+                <StatusBar style="auto" />
             </NavigationContainer>
             {/* </PersistGate> */}
         </Provider>
