@@ -5,12 +5,14 @@ import {
     Image,
     ScrollView,
     Text,
+    TextInput,
     TouchableOpacity,
     View,
 } from 'react-native'
 import { styles } from './index.styles'
 import { fetchProducts } from '../../redux/slices/productsSlice'
 import { AddToCart } from '../../components/AddToCart'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
@@ -54,8 +56,28 @@ export function Home({ navigation }) {
 
     return (
         <ScrollView>
-            <View>
-            
+            <View style={styles.container}>
+                <View style={styles.searchContainer}>
+                    <Ionicons
+                        name="search"
+                        size={15}
+                        color="gray"
+                        style={styles.searchIcon}
+                    />
+                    <TextInput
+                        style={styles.searchInput}
+                        placeholder="Search"
+                        value=""
+                        onChangeText={() => {}}
+                        onFocus={() => {}}
+                    />
+                </View>
+                <View style={styles.filterContainer}>
+                    <Text>Filters:</Text>
+                    <TouchableOpacity style={styles.filterBox}>
+                        <Text style={styles.filterText}>Select Filter</Text>
+                    </TouchableOpacity>
+                </View>
                 <FlatList
                     data={products}
                     renderItem={renderItem}

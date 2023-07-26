@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
+    container: {
+        padding: 10
+    },
     productCard: {
         flexBasis: '48%', // This will make sure two items appear in a row with some spacing
         marginVertical: 20,
@@ -11,14 +14,13 @@ const styles = StyleSheet.create({
         borderColor: '#eee',
         shadowColor: '#000',
         shadowOffset: { width: 1, height: 2 },
-        shadowOpacity:  0.2,
+        shadowOpacity: 0.2,
         shadowRadius: 3,
         elevation: 5,
     },
     listContainer: {
         flex: 1,
         justifyContent: 'space-between',
-        paddingHorizontal: 10,
         flexWrap: 'wrap',
     },
     productImage: {
@@ -29,6 +31,38 @@ const styles = StyleSheet.create({
     productName: {
         marginVertical: 20,
     },
+    searchContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        borderWidth: 1,
+        borderColor: 'gray',
+        paddingVertical: 10,
+        paddingHorizontal: 5,
+        borderRadius: 8,
+        marginVertical: 10
+    },
+    searchInput: {
+        width: '100%',
+    },
+    searchIcon: {
+        marginRight: 5,
+    },
+    filterContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    filterBox: {
+        backgroundColor: '#575656',
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5
+    },
+    filterText: {
+        color: '#fff'
+    }
 })
 
 export { styles }

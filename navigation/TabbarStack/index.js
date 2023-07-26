@@ -36,7 +36,7 @@ export default function TabbarStack() {
                             />
                         )
                     },
-                    tabBarActiveTintColor: 'tomato',
+                    tabBarActiveTintColor: '#575656',
                     tabBarInactiveTintColor: 'gray',
                 })}
             >
