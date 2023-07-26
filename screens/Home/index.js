@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     FlatList,
@@ -16,9 +16,18 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
-    const isLoading = useSelector((state) => state?.todos?.loading)
-    const error = useSelector((state) => state?.todos?.error)
+    const isLoading = useSelector((state) => state.products.loading)
+    const error = useSelector((state) => state.products.error)
     const dispatch = useDispatch()
+
+    const [searchProduct, setSearchProduct] = useState('')
+
+    const filteredProducts =
+        products &&
+        products.length > 0 &&
+        products.filter((product) =>
+            product.name.toLowerCase().includes(searchProduct.toLowerCase())
+        )
 
     useEffect(() => {
         dispatch(fetchProducts())
@@ -33,14 +42,14 @@ export function Home({ navigation }) {
         return <Text>Error: {error}</Text>
     }
 
-    const handleProductPress = (product) => {
+    const handleProductDetails = (product) => {
         navigation.navigate('ProductDetails', { product })
     }
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={styles.productCard}
-            onPress={() => handleProductPress(item)}
+            onPress={() => handleProductDetails(item)}
         >
             <Image
                 style={styles.productImage}
@@ -67,9 +76,8 @@ export function Home({ navigation }) {
                     <TextInput
                         style={styles.searchInput}
                         placeholder="Search"
-                        value=""
-                        onChangeText={() => {}}
-                        onFocus={() => {}}
+                        value={searchProduct}
+                        onChangeText={setSearchProduct}
                     />
                 </View>
                 <View style={styles.filterContainer}>
@@ -79,7 +87,7 @@ export function Home({ navigation }) {
                     </TouchableOpacity>
                 </View>
                 <FlatList
-                    data={products}
+                    data={filteredProducts}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
                     horizontal
