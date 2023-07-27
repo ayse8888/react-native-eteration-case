@@ -20,7 +20,6 @@ export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
     const isLoading = useSelector((state) => state.products.loading)
     const error = useSelector((state) => state.products.error)
-    const cart = useSelector((state) => state.cart)
     const dispatch = useDispatch()
 
     const [searchProduct, setSearchProduct] = useState('')

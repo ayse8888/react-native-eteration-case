@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
     },
     cartListContainer: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
