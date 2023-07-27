@@ -13,7 +13,13 @@ import { useSelector } from 'react-redux'
 const Tab = createBottomTabNavigator()
 
 export default function TabbarStack() {
-    const cart = useSelector(state => state.cart)
+    const cart = useSelector((state) => state.cart)
+    const quantities = cart.map((product) => product.quantity)
+    const quantitiesSum = quantities.reduce(
+        (prevValue, currentValue) => prevValue + currentValue,
+        0
+    )
+
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -46,7 +52,7 @@ export default function TabbarStack() {
                 <Tab.Screen
                     name="Cart"
                     component={CartStackScreen}
-                    options={{ tabBarBadge: cart.length }}
+                    options={{ tabBarBadge: quantitiesSum }}
                 />
                 <Tab.Screen name="Favorites" component={FavoritesStackScreen} />
                 <Tab.Screen name="Profile" component={ProfileStackScreen} />

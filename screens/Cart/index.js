@@ -1,19 +1,26 @@
 import { FlatList, Pressable, Text, View } from 'react-native'
 import { useSelector } from 'react-redux'
+import { styles } from './index.styles'
 
 export function Cart() {
     const cart = useSelector((state) => state.cart)
 
+    console.log('cart', cart)
+
     const renderItem = ({ item }) => (
-        <View>
-            <Text>{item.name}</Text>
-            <Text>{item.price}</Text>
+        <View style={styles.cartListContainer}>
             <View>
-                <Pressable>
+                <Text>{item.name}</Text>
+                <Text>{item.price}</Text>
+            </View>
+            <View style={styles.cartQuantityContainer}>
+                <Pressable style={styles.decrementBtn}>
                     <Text>-</Text>
                 </Pressable>
-                <Text>2</Text>
-                <Pressable>
+                <View style={styles.quantityTextContainer}>
+                    <Text style={styles.quantityText}>{item.quantity}</Text>
+                </View>
+                <Pressable style={styles.incrementBtn}>
                     <Text>+</Text>
                 </Pressable>
             </View>
@@ -21,12 +28,12 @@ export function Cart() {
     )
 
     return (
-        <View>
-            <Text>Cart!</Text>
+        <View style={styles.cartContainer}>
             <FlatList
                 data={cart}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id.toString()}
+                contentContainerStyle={styles.listContainer}
             />
         </View>
     )
