@@ -1,10 +1,13 @@
-import { FlatList, Pressable, Text, View } from 'react-native'
+import { FlatList, Pressable, ScrollView, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './index.styles'
 import {
     decrementQuantity,
     incrementQuantity,
 } from '../../redux/slices/cartSlice'
+import { Button } from '../../components/Button'
+import { toggleModal } from '../../redux/slices/modalSlice'
+import { FilterModal } from '../../components/FilterModal'
 
 export function Cart() {
     const cart = useSelector((state) => state.cart)
@@ -42,7 +45,7 @@ export function Cart() {
     )
 
     return (
-        <View style={styles.cartContainer}>
+        <ScrollView style={styles.cartContainer}>
             {cart.length > 0 ? (
                 <FlatList
                     data={cart}
@@ -53,9 +56,17 @@ export function Cart() {
             ) : (
                 <Text>There is no product in your cart</Text>
             )}
-            <View>
-                <Text>{totalPrice} ₺</Text>
+            <View style={styles.checkoutContainer}>
+                <View>
+                    <Text>Total:</Text>
+                    <Text>{totalPrice} ₺</Text>
+                </View>
+                <Button
+                    title="Complete"
+                    onPress={() => totalPrice > 0 && dispatch(toggleModal())}
+                />
+                <FilterModal modalContent="Thank you for your purchase" />
             </View>
-        </View>
+        </ScrollView>
     )
 }

@@ -11,10 +11,11 @@ import {
 } from 'react-native'
 import { styles } from './index.styles'
 import { fetchProducts } from '../../redux/slices/productsSlice'
-import { AddToCart } from '../../components/AddToCart'
+import { Button } from '../../components/Button'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Loading } from '../../components/Loading'
 import { Error } from '../../components/Error'
+import { addToCart } from '../../redux/slices/cartSlice'
 
 export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
@@ -47,7 +48,6 @@ export function Home({ navigation }) {
         navigation.navigate('ProductDetails', { product })
     }
 
-
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={styles.productCard}
@@ -61,7 +61,12 @@ export function Home({ navigation }) {
             />
             <Text>{item.price} ₺</Text>
             <Text style={styles.productName}>{item.name}</Text>
-            <AddToCart cartProduct={item} />
+            <Button
+                onPress={() => {
+                    dispatch(addToCart(item))
+                }}
+                title="Add To Cart"
+            />
         </TouchableOpacity>
     )
 

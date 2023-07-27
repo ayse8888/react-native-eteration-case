@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-    addToCardBtn: {
+    btn: {
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 12,
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         backgroundColor: 'black',
     },
-    addToCardText: {
+    btnText: {
         fontSize: 16,
         fontWeight: 'bold',
         letterSpacing: 0.25,

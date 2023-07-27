@@ -1,10 +1,14 @@
 import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 import { styles } from './index.styles'
 import { AddToCart } from '../../components/AddToCart'
+import { Button } from '../../components/Button'
+import { addToCart } from '../../redux/slices/cartSlice'
+import { useDispatch } from 'react-redux'
 
 export function ProductDetails({ route }) {
     const { product } = route.params
-    console.log(route)
+    const dispatch = useDispatch()
+
     return (
         <ScrollView>
             <View style={styles.productDetailContainer}>
@@ -25,7 +29,12 @@ export function ProductDetails({ route }) {
                             {product.price} ₺
                         </Text>
                     </View>
-                    <AddToCart />
+                    <Button
+                        onPress={() => {
+                            dispatch(addToCart(product))
+                        }}
+                        title="Add To Cart"
+                    />
                 </View>
             </View>
         </ScrollView>
