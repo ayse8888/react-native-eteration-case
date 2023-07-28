@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 20,
     },
     cartQuantityContainer: {
         flexDirection: 'row',
@@ -42,7 +41,8 @@ const styles = StyleSheet.create({
     checkoutContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 30
     }
 })
 

@@ -62,6 +62,13 @@ const styles = StyleSheet.create({
     },
     filterText: {
         color: '#fff'
+    },
+    favoriteBtn: {
+        marginTop: 10,
+        padding: 7,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
     }
 })
 

@@ -1,6 +1,5 @@
 import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 import { styles } from './index.styles'
-import { AddToCart } from '../../components/AddToCart'
 import { Button } from '../../components/Button'
 import { addToCart } from '../../redux/slices/cartSlice'
 import { useDispatch } from 'react-redux'

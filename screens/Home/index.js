@@ -16,6 +16,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Loading } from '../../components/Loading'
 import { Error } from '../../components/Error'
 import { addToCart } from '../../redux/slices/cartSlice'
+import { showModal, toggleModal } from '../../redux/slices/modalSlice'
+import { FilterModal } from '../../components/FilterModal'
+import { addToFavorites } from '../../redux/slices/favoritesSlice'
 
 export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
@@ -24,6 +27,7 @@ export function Home({ navigation }) {
     const dispatch = useDispatch()
 
     const [searchProduct, setSearchProduct] = useState('')
+    const [selectedBrands, setSelectedBrands] = useState([])
 
     const filteredProducts =
         products &&
@@ -67,6 +71,19 @@ export function Home({ navigation }) {
                 }}
                 title="Add To Cart"
             />
+            <TouchableOpacity
+                onPress={() => {
+                    dispatch(addToFavorites(item))
+                }}
+                style={styles.favoriteBtn}
+            >
+                <Ionicons
+                    name="heart-outline"
+                    size={25}
+                    color="gray"
+                    style={styles.searchIcon}
+                />
+            </TouchableOpacity>
         </TouchableOpacity>
     )
 
@@ -89,10 +106,15 @@ export function Home({ navigation }) {
                 </View>
                 <View style={styles.filterContainer}>
                     <Text>Filters:</Text>
-                    <TouchableOpacity style={styles.filterBox}>
+                    <TouchableOpacity
+                        style={styles.filterBox}
+                        onPress={() => dispatch(showModal())}
+                    >
                         <Text style={styles.filterText}>Select Filter</Text>
                     </TouchableOpacity>
                 </View>
+                <FilterModal modalContent="Thank you for your purchase" />
+
                 <FlatList
                     data={filteredProducts}
                     renderItem={renderItem}
