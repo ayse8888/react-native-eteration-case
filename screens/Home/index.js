@@ -19,6 +19,7 @@ import { addToCart } from '../../redux/slices/cartSlice'
 import { showModal, toggleModal } from '../../redux/slices/modalSlice'
 import { FilterModal } from '../../components/FilterModal'
 import { addToFavorites } from '../../redux/slices/favoritesSlice'
+import { Search } from '../../components/Search'
 
 export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
@@ -27,7 +28,16 @@ export function Home({ navigation }) {
     const dispatch = useDispatch()
 
     const [searchProduct, setSearchProduct] = useState('')
-    const [selectedBrands, setSelectedBrands] = useState([])
+    const selectedBrands = useSelector((state) => state.brand.selectedBrands)
+    const selectedModels = useSelector((state) => state.model.selectedModels)
+
+    const filteredBrands = products.filter((product) =>
+        selectedBrands.includes(product.brand)
+    )
+
+    const filteredModels = products.filter((product) =>
+        selectedModels.includes(product.model)
+    )
 
     const filteredProducts =
         products &&
@@ -35,6 +45,22 @@ export function Home({ navigation }) {
         products.filter((product) =>
             product.name.toLowerCase().includes(searchProduct.toLowerCase())
         )
+
+    let displayedProducts
+    switch (true) {
+        case searchProduct.length > 0:
+            displayedProducts = filteredProducts
+            break
+        case filteredBrands.length > 0:
+            displayedProducts = filteredBrands
+            break
+        case filteredModels.length > 0:
+            displayedProducts = filteredModels
+            break
+        default:
+            displayedProducts = products
+            break
+    }
 
     useEffect(() => {
         dispatch(fetchProducts())
@@ -90,25 +116,16 @@ export function Home({ navigation }) {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <View style={styles.searchContainer}>
-                    <Ionicons
-                        name="search"
-                        size={15}
-                        color="gray"
-                        style={styles.searchIcon}
-                    />
-                    <TextInput
-                        style={styles.searchInput}
-                        placeholder="Search"
-                        value={searchProduct}
-                        onChangeText={setSearchProduct}
-                    />
-                </View>
+                <Search
+                    size={15}
+                    value={searchProduct}
+                    onChangeText={setSearchProduct}
+                />
                 <View style={styles.filterContainer}>
                     <Text>Filters:</Text>
                     <TouchableOpacity
                         style={styles.filterBox}
-                        onPress={() => dispatch(showModal())}
+                        onPress={() => dispatch(toggleModal())}
                     >
                         <Text style={styles.filterText}>Select Filter</Text>
                     </TouchableOpacity>
@@ -116,7 +133,7 @@ export function Home({ navigation }) {
                 <FilterModal modalContent="Thank you for your purchase" />
 
                 <FlatList
-                    data={filteredProducts}
+                    data={displayedProducts}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id.toString()}
                     horizontal

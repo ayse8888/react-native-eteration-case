@@ -3,9 +3,11 @@ import { styles } from './index.styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideModal } from '../../redux/slices/modalSlice'
 import { Button } from '../Button'
-import { FilterCheckBox } from '../FilterCheckBox'
+import { BrandCheckBox } from '../BrandCheckBox'
+import { ModelCheckbox } from '../ModelCheckBox'
+import { Search } from '../Search'
 
-export function FilterModal({ modalContent }) {
+export function FilterModal() {
     const isModalVisible = useSelector((state) => state.modal.isModalVisible)
     const dispatch = useDispatch()
     return (
@@ -17,17 +19,19 @@ export function FilterModal({ modalContent }) {
             <SafeAreaView style={styles.modalContainer}>
                 <View style={styles.modalTitleContainer}>
                     <Button title="X" onPress={() => dispatch(hideModal())} />
-                    <Text>Filter</Text>
+                    <Text style={{fontSize: 25}}>Filter</Text>
                 </View>
                 <View style={{ padding: 20 }}>
-                    <ScrollView style={{ maxHeight: 150 }}>
+                    <ScrollView style={styles.scrollHeight}>
                         <Text style={styles.filtersTitle}>Brand</Text>
-                        <FilterCheckBox />
+                        <Search size={15} />
+                        <BrandCheckBox />
                     </ScrollView>
                     <View style={styles.stickyButtonLine} />
-                    <ScrollView style={{ maxHeight: 150 }}>
-                        <Text style={styles.filtersTitle}>Brand</Text>
-                        <FilterCheckBox />
+                    <ScrollView style={styles.scrollHeight}>
+                        <Text style={styles.filtersTitle}>Model</Text>
+                        <Search size={15} />
+                        <ModelCheckbox />
                     </ScrollView>
                     <View style={styles.stickyButtonLine} />
                     <View></View>

@@ -7,7 +7,7 @@ import {
 } from '../../redux/slices/cartSlice'
 import { Button } from '../../components/Button'
 import { toggleModal } from '../../redux/slices/modalSlice'
-import { FilterModal } from '../../components/FilterModal'
+import { CheckOutModal } from '../../components/CheckOutModal'
 
 export function Cart() {
     const cart = useSelector((state) => state.cart)
@@ -51,7 +51,6 @@ export function Cart() {
                     data={cart}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id.toString()}
-                    contentContainerStyle={styles.listContainer}
                 />
             ) : (
                 <Text>There is no product in your cart</Text>
@@ -65,7 +64,7 @@ export function Cart() {
                     title="Complete"
                     onPress={() => totalPrice > 0 && dispatch(toggleModal())}
                 />
-                <FilterModal modalContent="Thank you for your purchase" />
+                <CheckOutModal />
             </View>
         </ScrollView>
     )

@@ -23,7 +23,10 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     filtersTitle: {
-        marginBottom: 10,
+        marginBottom: 5,
+    },
+    scrollHeight: {
+        maxHeight: 200,
     },
 })
 

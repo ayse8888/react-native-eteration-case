@@ -6,6 +6,8 @@ import cartReducer from './slices/cartSlice'
 import modalReducer from './slices/modalSlice'
 import favoriteReducer from './slices/favoritesSlice'
 import thunk from 'redux-thunk'
+import brandReducer from './slices/brandSlice'
+import modelReducer from './slices/modelSlice'
 
 const persistConfig = {
     storage: AsyncStorage,
@@ -17,6 +19,8 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     modal: modalReducer,
     favorites: favoriteReducer,
+    brand: brandReducer,
+    model: modelReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
