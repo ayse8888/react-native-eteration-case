@@ -5,7 +5,7 @@ Download Expo Go App from Google Play Store/App Store. \
 Create an account and login. \
 Please run command "npx expo start" to start the project \
 You will see a QR code on your terminal. \
-If you are using Android Device, scan QR code on Expo Go \
+If you are using Android Device, scan QR code via Expo Go \
 If you are using IOS device, scan QR code on your device camera. \
 Please make sure you are connected to the same WIFI on your mobile device and computer
 
