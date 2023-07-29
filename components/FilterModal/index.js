@@ -22,7 +22,7 @@ export function FilterModal({
             animationType="slide"
             transparent={true}
         >
-            <SafeAreaView style={styles.modalContainer}>
+            <SafeAreaView style={styles.modalContainer} testID="modal-container">
                 <ScrollView>
                     <View style={styles.modalTitleContainer}>
                         <Button
