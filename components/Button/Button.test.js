@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { Button } from './index'; // Make sure the import path is correct
+import { Button } from './index';
 
 // Mock the onPress function
 const mockOnPress = jest.fn();
