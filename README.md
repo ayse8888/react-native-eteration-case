@@ -16,7 +16,7 @@ You can see cart quantity on cart badge ( tabbar ) \
 You can view Product Details \
 You can add products to your Favorite List or remove from \
 You can search products by their name in home page \
-You can filter products by brand, model, price, or creation time \
+You can filter products by brand, model, price, or creation time 
 
 Technologies: 
   * React Native,
