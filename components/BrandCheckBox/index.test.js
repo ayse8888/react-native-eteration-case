@@ -22,7 +22,7 @@ describe('BrandCheckBox', () => {
     jest.spyOn(Redux, 'useSelector').mockReturnValueOnce(mockProductData).mockReturnValueOnce(mockSelectedBrands);
 
     const { getAllByTestId } = render(<BrandCheckBox />);
-    const checkboxes = getAllByTestId('checkbox');
+    const checkboxes = getAllByTestId('brand-checkbox');
     expect(checkboxes.length).toBe(mockProductData.length);
   });
 
@@ -35,7 +35,7 @@ describe('BrandCheckBox', () => {
     jest.spyOn(Redux, 'useSelector').mockReturnValueOnce(mockProductData).mockReturnValueOnce(mockSelectedBrands);
 
     const { getAllByTestId } = render(<BrandCheckBox />);
-    const checkbox = getAllByTestId('checkbox')[0];
+    const checkbox = getAllByTestId('brand-checkbox')[0];
     fireEvent(checkbox, 'press');
 
     expect(mockDispatch).toHaveBeenCalledWith(toggleBrandSelection('Brand 1'));

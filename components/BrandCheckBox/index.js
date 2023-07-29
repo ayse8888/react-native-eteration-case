@@ -24,7 +24,7 @@ export function BrandCheckBox() {
                             dispatch(toggleBrandSelection(item.brand))
                         }
                         color={'#575656'}
-                        testID='checkbox'
+                        testID='brand-checkbox'
                     />
                     <Text style={{ marginLeft: 5 }}>{item.brand}</Text>
                 </View>
