@@ -6,7 +6,7 @@ Create an account and login. \
 Please run command "npx expo start" to start the project \
 You will see a QR code on your terminal. \
 If you are using Android Device, scan QR code on Expo Go \
-If you are using IOS device, scan QR code on your device camera. \
+If you are using IOS device, scan QR code on your device camera. 
 
 First you will see products from an API in the home page \
 You can add them to your cart. \
