@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const modalSlice = createSlice({
-    name: 'modal',
+const checkOutModalSlice = createSlice({
+    name: 'checkOutModal',
     initialState: {
         isModalVisible: false,
     },
@@ -18,6 +18,6 @@ const modalSlice = createSlice({
     },
 })
 
-export const { showModal, hideModal, toggleModal } = modalSlice.actions
+export const { showModal, hideModal, toggleModal } = checkOutModalSlice.actions
 
-export default modalSlice.reducer
+export default checkOutModalSlice.reducer

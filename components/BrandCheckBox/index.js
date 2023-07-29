@@ -1,5 +1,5 @@
 import Checkbox from 'expo-checkbox'
-import React, { useState } from 'react'
+import React from 'react'
 import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from './index.styles'
 import { useDispatch, useSelector } from 'react-redux'

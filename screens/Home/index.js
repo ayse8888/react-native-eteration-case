@@ -5,7 +5,6 @@ import {
     Image,
     ScrollView,
     Text,
-    TextInput,
     TouchableOpacity,
     View,
 } from 'react-native'
@@ -16,10 +15,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Loading } from '../../components/Loading'
 import { Error } from '../../components/Error'
 import { addToCart } from '../../redux/slices/cartSlice'
-import { showModal, toggleModal } from '../../redux/slices/modalSlice'
+import { toggleModal } from '../../redux/slices/modalSlice'
 import { FilterModal } from '../../components/FilterModal'
 import { addToFavorites } from '../../redux/slices/favoritesSlice'
 import { Search } from '../../components/Search'
+import moment from 'moment'
 
 export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
@@ -30,6 +30,7 @@ export function Home({ navigation }) {
     const [searchProduct, setSearchProduct] = useState('')
     const selectedBrands = useSelector((state) => state.brand.selectedBrands)
     const selectedModels = useSelector((state) => state.model.selectedModels)
+    const [asdes, setAsDes] = useState([])
 
     const filteredBrands = products.filter((product) =>
         selectedBrands.includes(product.brand)
@@ -46,6 +47,34 @@ export function Home({ navigation }) {
             product.name.toLowerCase().includes(searchProduct.toLowerCase())
         )
 
+    // high to low
+    const handleHighToLowFilter = () => {
+        let descending = [...products].sort((a, b) => b.price - a.price)
+        setAsDes(descending)
+    }
+
+    // low to high
+    const handleLowToHighFilter = () => {
+        let ascending = [...products].sort((a, b) => a.price - b.price)
+        setAsDes(ascending)
+    }
+
+    // old to new
+    const handleOldToNewFilter = () => {
+        let timeAscending = [...products].sort((a, b) =>
+            moment(a.createdAt).diff(moment(b.createdAt))
+        )
+        setAsDes(timeAscending)
+    }
+
+    // new to old
+    const handleNewToOldFilter = () => {
+        let timeDescending = [...products].sort((a, b) =>
+            moment(b.createdAt).diff(moment(a.createdAt))
+        )
+        setAsDes(timeDescending)
+    }
+
     let displayedProducts
     switch (true) {
         case searchProduct.length > 0:
@@ -56,6 +85,9 @@ export function Home({ navigation }) {
             break
         case filteredModels.length > 0:
             displayedProducts = filteredModels
+            break
+        case asdes.length > 0:
+            displayedProducts = asdes
             break
         default:
             displayedProducts = products
@@ -89,6 +121,7 @@ export function Home({ navigation }) {
                     uri: item.image,
                 }}
             />
+            <Text>{item.createdAt}</Text>
             <Text>{item.price} ₺</Text>
             <Text style={styles.productName}>{item.name}</Text>
             <Button
@@ -130,7 +163,12 @@ export function Home({ navigation }) {
                         <Text style={styles.filterText}>Select Filter</Text>
                     </TouchableOpacity>
                 </View>
-                <FilterModal modalContent="Thank you for your purchase" />
+                <FilterModal
+                    onOldToNew={handleOldToNewFilter}
+                    onNewToOld={handleNewToOldFilter}
+                    onLowToHigh={handleLowToHighFilter}
+                    onHighToLow={handleHighToLowFilter}
+                />
 
                 <FlatList
                     data={displayedProducts}

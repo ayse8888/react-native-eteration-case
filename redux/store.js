@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistReducer, persistStore } from 'redux-persist' // Import persistReducer and persistStore functions
+import { persistReducer, persistStore } from 'redux-persist'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import productsReducer from './slices/productsSlice'
 import cartReducer from './slices/cartSlice'
@@ -8,6 +8,7 @@ import favoriteReducer from './slices/favoritesSlice'
 import thunk from 'redux-thunk'
 import brandReducer from './slices/brandSlice'
 import modelReducer from './slices/modelSlice'
+import checkOutModalReducer from './slices/checkOutModalSlice'
 
 const persistConfig = {
     storage: AsyncStorage,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     modal: modalReducer,
     favorites: favoriteReducer,
     brand: brandReducer,
-    model: modelReducer
+    model: modelReducer,
+    checkOutModal: checkOutModalReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

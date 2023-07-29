@@ -1,11 +1,11 @@
 import { Modal, SafeAreaView, Text, View } from 'react-native'
 import { styles } from './index.styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { hideModal } from '../../redux/slices/modalSlice'
 import { Button } from '../Button'
+import { hideModal } from '../../redux/slices/checkOutModalSlice'
 
 export function CheckOutModal() {
-    const isModalVisible = useSelector((state) => state.modal.isModalVisible)
+    const isModalVisible = useSelector((state) => state.checkOutModal.isModalVisible)
     const dispatch = useDispatch()
     return (
         <Modal

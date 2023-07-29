@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from '../../screens/Home'
 import { ProductDetails } from '../../screens/ProductDetails'
-import { Profile, Settings } from '../../screens/Profile'
+import { Profile } from '../../screens/Profile'
 import { Cart } from '../../screens/Cart'
 import { Favorites } from '../../screens/Favorites'
 

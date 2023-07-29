@@ -6,8 +6,8 @@ import {
     incrementQuantity,
 } from '../../redux/slices/cartSlice'
 import { Button } from '../../components/Button'
-import { toggleModal } from '../../redux/slices/modalSlice'
 import { CheckOutModal } from '../../components/CheckOutModal'
+import { toggleModal } from '../../redux/slices/checkOutModalSlice'
 
 export function Cart() {
     const cart = useSelector((state) => state.cart)
@@ -16,7 +16,6 @@ export function Cart() {
     const totalPrice = cart.reduce((sum, item) => {
         return (sum += item.price * item.quantity)
     }, 0)
-    console.log('totalPrice', totalPrice)
 
     const renderItem = ({ item }) => (
         <View style={styles.cartListContainer}>

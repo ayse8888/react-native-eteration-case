@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         borderRadius: 8,
         marginVertical: 10,
+        alignItems: 'center'
     },
     searchInput: {
         width: '100%',

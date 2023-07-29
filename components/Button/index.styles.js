@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     btn: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
     },
     btnText: {
-        fontSize: 16,
+        fontSize: Platform.OS === 'ios' ? 16 : 12,
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
