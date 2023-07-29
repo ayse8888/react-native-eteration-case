@@ -25,12 +25,12 @@ export function Home({ navigation }) {
     const products = useSelector((state) => state.products.productData)
     const isLoading = useSelector((state) => state.products.loading)
     const error = useSelector((state) => state.products.error)
-    const dispatch = useDispatch()
-
-    const [searchProduct, setSearchProduct] = useState('')
     const selectedBrands = useSelector((state) => state.brand.selectedBrands)
     const selectedModels = useSelector((state) => state.model.selectedModels)
-    const [asdes, setAsDes] = useState([])
+    const [searchProduct, setSearchProduct] = useState('')
+    const [ascendingDescending, setAscendingDescending] = useState([])
+
+    const dispatch = useDispatch()
 
     const filteredBrands = products.filter((product) =>
         selectedBrands.includes(product.brand)
@@ -40,6 +40,7 @@ export function Home({ navigation }) {
         selectedModels.includes(product.model)
     )
 
+    // search products
     const filteredProducts =
         products &&
         products.length > 0 &&
@@ -50,13 +51,13 @@ export function Home({ navigation }) {
     // high to low
     const handleHighToLowFilter = () => {
         let descending = [...products].sort((a, b) => b.price - a.price)
-        setAsDes(descending)
+        setAscendingDescending(descending)
     }
 
     // low to high
     const handleLowToHighFilter = () => {
         let ascending = [...products].sort((a, b) => a.price - b.price)
-        setAsDes(ascending)
+        setAscendingDescending(ascending)
     }
 
     // old to new
@@ -64,7 +65,7 @@ export function Home({ navigation }) {
         let timeAscending = [...products].sort((a, b) =>
             moment(a.createdAt).diff(moment(b.createdAt))
         )
-        setAsDes(timeAscending)
+        setAscendingDescending(timeAscending)
     }
 
     // new to old
@@ -72,7 +73,7 @@ export function Home({ navigation }) {
         let timeDescending = [...products].sort((a, b) =>
             moment(b.createdAt).diff(moment(a.createdAt))
         )
-        setAsDes(timeDescending)
+        setAscendingDescending(timeDescending)
     }
 
     let displayedProducts
@@ -86,8 +87,8 @@ export function Home({ navigation }) {
         case filteredModels.length > 0:
             displayedProducts = filteredModels
             break
-        case asdes.length > 0:
-            displayedProducts = asdes
+        case ascendingDescending.length > 0:
+            displayedProducts = ascendingDescending
             break
         default:
             displayedProducts = products
@@ -121,7 +122,6 @@ export function Home({ navigation }) {
                     uri: item.image,
                 }}
             />
-            <Text>{item.createdAt}</Text>
             <Text>{item.price} ₺</Text>
             <Text style={styles.productName}>{item.name}</Text>
             <Button
