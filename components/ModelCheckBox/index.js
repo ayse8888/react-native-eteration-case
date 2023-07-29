@@ -22,6 +22,7 @@ export function ModelCheckbox() {
                             dispatch(toggleModelSelection(item.model))
                         }
                         color={'#575656'}
+                        testID='model-checkbox'
                     />
                     <Text style={{ marginLeft: 5 }}>{item.model}</Text>
                 </View>

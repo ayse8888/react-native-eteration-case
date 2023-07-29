@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react-native';
-import { Search } from './index'; // Make sure the import path is correct
+import { Search } from './index';
 
 describe('Search', () => {
     it('renders correctly', () => {
